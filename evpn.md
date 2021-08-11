@@ -6,6 +6,27 @@ and Arista EOS running on a Trident 2 switch.
 We are using the new improved VRF-aware FRR managed configuration by enabling
 `frr_mgmt_framework_config` in the device metadata.
 
+## Commands
+
+These commands can be run straight from the shell.
+
+| Description | Command |
+| ------------|---------|
+| Show discovered remoted VTEPs | `show vxlan remotevtep` |
+| Show learnt MACs from a given VTEP | `show vxlan remotemac 10.0.0.12` |
+| Show installed MACs on a VLAN | `/sbin/bridge fdb show vlan 1991` |
+| Show Linux details about NVE interface | `ip -d link show nve1-1991`
+
+### vtysh
+
+These commands should be run inside `vtysh`.
+
+| Description | Command |
+| ------------|---------|
+| Show known VNIs | `show bgp l2vpn evpn vni` |
+| Show learned MACs | `show evpn mac vni all` |
+| Show details about EVPN objects | `show bgp l2vpn evpn route detail` |
+
 ## SONiC configuration
 
 ```json
