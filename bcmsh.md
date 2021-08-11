@@ -2,21 +2,21 @@ You can enter the Broadcom diagnostic shell by entering `bcmsh`.
 
 # Useful commands
 
- * help
- * show unit
+ * `help`
+ * `show unit`
    * Shows what ASIC you have
- * show param
+ * `show param`
    * A whole dump of useful information, specifically useful for figuring
      out what ports are available if you need to manual breakout for example.
- * ps / **P**ort**S**tatus
+ * `ps`
    * Shows all configured ports and their status
- * phy diag xe0 dsc
+ * `phy diag xe0 dsc`
    * Shows low-level lane SerDes status, useful for debugging lane mapping
- * show counters changed same nz cpu0
+ * `show counters changed same nz cpu0`
    * Shows all counters that are non-zero for cpu0
- * bsv
+ * `bsv`
    * Show SDK and SAI version
- * pciephy fw version
+ * `pciephy fw version`
    * Shows PCIe firmware version
 
 You can tell SONiC to use debug level logging on things related to SAI
