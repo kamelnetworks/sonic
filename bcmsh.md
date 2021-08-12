@@ -28,6 +28,7 @@ run into syslog rate limiting after more than a second of logs.
 Terms:
 
  * ESW - **E**nterprise **SW**itching
+ * DEFIP - IPv4 routing table
 
 ## BCM Knet
 
@@ -155,3 +156,53 @@ Now we can use `tcpdump` as usual on the interface. Beware, since we
 are now sending the packets to the CPU Linux will of course start processing
 them. So by enabling this hack you might change the behavior of the thing
 you are trying to debug.
+
+## L3 routing behavior
+
+The routing tables for IPv4 and IPv6 can be examined using
+`l3 defip show` or `l3 ip6route show` respectively.
+
+```
+drivshell> l3 defip show
+Unit 0, Total Number of DEFIP entries: 393216
+#     VRF     Net addr             Next Hop Mac        INTF MODID PORT PRIO CLASS HIT VLAN
+16    0        172.18.0.0/24        00:00:00:00:00:00 100003    0     0     0    2 n
+48    1        192.168.216.0/24     00:00:00:00:00:00 100003    0     0     0    2 n
+80    2        192.168.216.0/24     00:00:00:00:00:00 100003    0     0     0    0 n
+112   3        192.168.216.0/24     00:00:00:00:00:00 100003    0     0     0    2 n
+112   3        193.228.143.236/31   00:00:00:00:00:00 100003    0     0     0    2 n
+1     0        0.0.0.0/0            00:00:00:00:00:00 100002    0     0     0    0 n
+3     1        0.0.0.0/0            00:00:00:00:00:00 100002    0     0     0    0 n
+5     2        0.0.0.0/0            00:00:00:00:00:00 100002    0     0     0    0 n
+7     3        0.0.0.0/0            00:00:00:00:00:00 100005    0     0     0    0 n
+```
+
+The columns should be pretty self-explanatory except the INTerFace column.
+It referens an egress interface. To list those use `l3 egress show`.
+
+```
+drivshell> l3 egress show
+Entry  Mac                 Vlan INTF PORT MOD MPLS_LABEL ToCpu Drop RefCount L3MC
+100002  3c:2c:30:78:5b:80    1    1     0    0        -1   no  yes    7   no
+100003  3c:2c:30:78:5b:80    0 16383    0    0        -1   no   no   21   no
+100004  ff:ff:ff:ff:ff:ff    0    6   130    0        -1   no   no    0  yes
+100005  00:09:0f:09:bc:07  511    7   130    0        -1   no   no    2   no
+100006  00:50:56:97:f3:6d 4095    4    95    0        -1   no   no    1   no
+100007  00:50:56:97:f3:6d 4095    5    96    0        -1   no   no    1   no
+100008  00:09:0f:09:d4:01 4095    4    95    0        -1   no   no    1   no
+100009  00:09:0f:09:d4:01 4095    5    96    0        -1   no   no    1   no
+100010  00:09:0f:09:bc:07  511    7   130    0        -1   no   no    1   no
+100011  76:c0:f8:4b:c8:5d 4095    4    95    0        -1   no   no    1   no
+100012  76:c0:f8:4b:c8:5c 4095    5    96    0        -1   no   no    1   no
+```
+
+An important note here is that `100003` with its INTF of `16383` means that the
+traffic will be sent to the CPU. That is likely not what you want unless you
+want to route some network running onboard the management CPU on the switch.
+If you are doing this you have probably made some questionable design choices.
+
+To manually add an IPv6 route you can use `l3 ip6route add` like this:
+
+```
+drivshell> l3 ip6route add vrf=3 IP=2a10:11c0:: masklen=32 mac=00:09:0f:09:bc:07 intf=100008
+```
