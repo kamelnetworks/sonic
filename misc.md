@@ -17,6 +17,20 @@ Random good-to-know things about SONiC that we wish were better documented
 | Set interface description | `sonic-db-cli CONFIG_DB hset "PORT|Ethernet94" description "some fancy description"`
 | Enable REST API authentication | `sonic-db-cli CONFIG_DB hset "REST_SERVER|default" client_auth password` |
 
+## Changing the eth0 MAC address
+
+If you are running `eth0` in the management VRF you might want to change the MAC address to avoid
+traffic bouncing around and messing with your management connectivity.
+
+SONiC configuration does not currently include a way to change the MAC address on this special interface,
+but you can still do it using Debian's interface files:
+
+```
+# /etc/network/interfaces.d/eth0-mac 
+auto eth0
+iface eth0 inet manual
+  pre-up /sbin/ip link set dev eth0 addr ee:6e:08:ef:99:39
+```
 
 ## `frr_mgmt_framework_config`
 
