@@ -12,6 +12,10 @@ You can enter the Broadcom diagnostic shell by entering `bcmsh`.
    * Shows all configured ports and their status
  * `phy diag xe0 dsc`
    * Shows low-level lane SerDes status, useful for debugging lane mapping
+ * `pbmp xe0-xe5`
+   * Create a **port bitmap** for given ports. This is used for other commands.
+ * `port ${pbmp} enable=true`
+   * Configure a port as enabled directly (instead of using SONiC commands)
  * `show counters changed same nz cpu0`
    * Shows all counters that are non-zero for cpu0
  * `bsv`
