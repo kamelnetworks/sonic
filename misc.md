@@ -14,8 +14,9 @@ Random good-to-know things about SONiC that we wish were better documented
 | Description       | Command                     |
 |-------------------|-----------------------------|
 | Enter KLISH       | `sonic-cli` |
-| Set interface description | `sonic-db-cli CONFIG_DB hset "PORT|Ethernet94" description "some fancy description"`
-| Enable REST API authentication | `sonic-db-cli CONFIG_DB hset "REST_SERVER|default" client_auth password` |
+| Set interface description | `sonic-db-cli CONFIG_DB hset "PORT\|Ethernet94" description "some fancy description"` |
+| Enable REST API authentication | `sonic-db-cli CONFIG_DB hset "REST_SERVER\|default" client_auth password` |
+| Reset configuration | `sonic-cfggen -H -k "$(sonic-cfggen -d -v 'DEVICE_METADATA.localhost.hwsku')" --print-data > /etc/sonic/config_db.json` |
 
 ## Changing the eth0 MAC address
 
