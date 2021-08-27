@@ -22,6 +22,8 @@ You can enter the Broadcom diagnostic shell by entering `bcmsh`.
    * Show SDK and SAI version
  * `pciephy fw version`
    * Shows PCIe firmware version
+ * `crm show resources all`
+   * Show resource utilization for all critical resources 
 
 You can tell SONiC to use debug level logging on things related to SAI
 with the command `swssloglevel -l SAI_LOG_LEVEL_DEBUG -s -a`.
