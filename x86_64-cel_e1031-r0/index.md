@@ -1,5 +1,5 @@
 # Celestica E1031 "Haliburton"
-# aka Supermicro SSE-G3648B / SSE-G3648BR
+aka Supermicro SSE-G3648B / SSE-G3648BR
 
 TODO
 
