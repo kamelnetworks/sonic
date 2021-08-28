@@ -9,4 +9,6 @@ We also host the unofficial SONiC download site [sonic.software](https://sonic.s
 
 Device specific documentation:
 
+ * [Celestica DX030 "Seastone2"](x86_64-cel_seastone_2-r0/index.md)
+ * [Celestica E1031 "Haliburton"[(x86_64-cel_e1031-r0/index.md)
  * [Dell EMC S5232F-ON](x86_64-dellemc_s5232f_c3538-r0/index.md)
