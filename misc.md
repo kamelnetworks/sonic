@@ -125,3 +125,11 @@ The numbers of these are as of this writing:
 #define CHASSIS_APP_DB      12
 #define CHASSIS_STATE_DB    13
 ```
+
+## Recovering SONiC bootloader from ONIE Rescue
+
+If you for example do a BIOS reset and the UEFI boot entries are dropped, you can restore it like this:
+
+```
+$ efibootmgr -c -L SONiC-OS -l '\EFI\SONiC-OS\grubx64.efi'
+```
