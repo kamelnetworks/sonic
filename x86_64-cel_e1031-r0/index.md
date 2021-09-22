@@ -1,5 +1,7 @@
 # Celestica E1031 "Haliburton"
 aka Supermicro SSE-G3648B / SSE-G3648BR
+aka Dell EMC S3048-ON
+aka Penguin Arctica 4804iq
 
 TODO
 
