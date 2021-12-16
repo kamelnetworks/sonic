@@ -33,6 +33,46 @@ iface eth0 inet manual
   pre-up /sbin/ip link set dev eth0 addr ee:6e:08:ef:99:39
 ```
 
+## Reading DOM / DDM data for transceivers
+
+The easiest way to do this is by using e.g. `sfputil show eeprom -d -p Ethernet12`.
+
+Output looks like this:
+
+```
+Ethernet12: SFP EEPROM detected
+        Connector: LC
+        Encoding: 64B66B
+        Extended Identifier: Power Class 4(3.5W max), CDR present in Rx Tx
+        Extended RateSelect Compliance: Unknown
+        Identifier: QSFP28 or later
+        Length Cable Assembly(m): 0
+        Length OM1(m): 0
+        Length OM2(m): 0
+        Length OM3(2m): 0
+        Length(km): 2
+        Nominal Bit Rate(100Mbs): 255
+        Specification compliance:
+        Vendor Date Code(YYYY-MM-DD Lot): 2020-08-22 
+        Vendor Name: AOI
+        Vendor OUI: 00-29-26
+        Vendor PN: AQPLBCQ4EDMA1072
+        Vendor Rev: A
+        Vendor SN: 75520H10771
+        ChannelMonitorValues:
+                RX1Power: -17.6195dBm
+                RX2Power: -17.1897dBm
+                RX3Power: -16.8825dBm
+                RX4Power: -infdBm
+                TX1Bias: 38.7840mA
+                TX2Bias: 38.7840mA
+                TX3Bias: 38.7840mA
+                TX4Bias: 38.7840mA
+        ModuleMonitorValues:
+                Temperature: 34.3438C
+                Vcc: 3.3938Volts
+```
+
 ## `frr_mgmt_framework_config`
 
 SONiC has [two](https://github.com/Azure/sonic-buildimage/blob/202012/dockers/docker-fpm-frr/frr/bgpd/gen_bgpd.conf.j2)
