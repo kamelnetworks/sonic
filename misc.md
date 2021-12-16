@@ -73,6 +73,11 @@ Ethernet12: SFP EEPROM detected
                 Vcc: 3.3938Volts
 ```
 
+## Manually changing `hwsku`
+
+If you do change this in `config_db.json`, make sure to look at `/etc/sonic/sonic-environment` and ensure it updates or
+the syncd process might pick up the old configuration.
+
 ## `frr_mgmt_framework_config`
 
 SONiC has [two](https://github.com/Azure/sonic-buildimage/blob/202012/dockers/docker-fpm-frr/frr/bgpd/gen_bgpd.conf.j2)
