@@ -4,6 +4,7 @@ These are some articles we have written about how to configure and operate SONiC
  * [Queues and Buffers](queue.md)
  * [EVPN setup and operations](evpn.md)
  * [Broadcom shell tips & tricks](bcmsh.md)
+ * More than you want to know about [Interface LEDs](led.md)
  
 We also host the unofficial SONiC download site [sonic.software](https://sonic.software/)
 
