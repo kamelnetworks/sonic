@@ -15,8 +15,32 @@ Random good-to-know things about SONiC that we wish were better documented
 |-------------------|-----------------------------|
 | Enter KLISH       | `sonic-cli` |
 | Set interface description | `sonic-db-cli CONFIG_DB hset "PORT|Ethernet94" description "some fancy description"` |
-| Enable REST API authentication | `sonic-db-cli CONFIG_DB hset "REST_SERVER|default" client_auth password` |
 | Reset configuration | `sonic-cfggen -H -k "$(sonic-cfggen -d -v 'DEVICE_METADATA.localhost.hwsku')" --print-data > /etc/sonic/config_db.json` |
+
+## Enable REST API authentication
+
+By default the REST API is unauthenticated (!!) so you want to enable some sort of authentication.
+
+Today, due to some weirdness in handling `nil` values you can load the following configuration blob:
+```json
+{
+    "REST_SERVER": {
+        "default": {
+            "client_auth": "user",
+            "server_crt": "",
+            "server_key": "",
+            "ca_crt": "",
+            "port": "",
+            "log_level": ""
+        }
+    }
+}
+```
+
+This loads a configuration that enables user authentication that seems to be
+PAM based - but it has not been verified.
+
+Hopefully in the future this can be a `config` command...
 
 ## Changing the eth0 MAC address
 
