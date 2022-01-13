@@ -5,6 +5,7 @@ These are some articles we have written about how to configure and operate SONiC
  * [EVPN setup and operations](evpn.md)
  * [Broadcom shell tips & tricks](bcmsh.md)
  * More than you want to know about [Interface LEDs](led.md)
+ * Good to know about [QSFP -> SFP adapters](qsfp-sfp-adapters.md)
  
 We also host the unofficial SONiC download site [sonic.software](https://sonic.software/)
 
