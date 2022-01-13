@@ -34,7 +34,7 @@ as the common way to read/write to transceivers. As of this writing it has not b
 
 ## EEPROM on SFP
 
-Example EEPROM where 0x100 is mapped to I2C address 0x51.
+Example EEPROM of a DWDM SFP where 0x100 is mapped to I2C address 0x51.
 ```
 00000000  0b 04 07 80 00 00 00 00  00 00 00 03 67 00 50 ff  |............g.P.|
 00000010  00 00 00 00 50 72 6f 20  31 30 20 4f 70 74 69 78  |....Pro 10 Optix|
@@ -56,6 +56,8 @@ Example EEPROM where 0x100 is mapped to I2C address 0x51.
 *
 00000200
 ```
+
+Here the DOM is located in the artificial 0x100 range bytes as per SFF-8472.
 
 ## EEPROM on QSFP
 
@@ -79,3 +81,5 @@ Example EEPROM from a 100G QSFP module:
 000000e0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  |................|
 000000f0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  |................|
 ```
+
+Here the DOM is located in the first 128 bytes as per SFF-8436.
