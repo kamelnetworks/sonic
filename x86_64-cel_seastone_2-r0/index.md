@@ -2,6 +2,9 @@
 
 TODO
 
+Retails as:
+ - [Arctica NX3200c Network Switch](https://www.penguincomputing.com/products/network-switches/arctica-nx3200c/)
+
 ![Front](PXL_20210514_150809580.jpg)
 ![Motherboard](PXL_20210514_154023687.jpg)
 ![CPU](PXL_20210514_154043444.jpg)
