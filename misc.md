@@ -203,3 +203,8 @@ If you for example do a BIOS reset and the UEFI boot entries are dropped, you ca
 ```
 $ efibootmgr -c -L SONiC-OS -l '\EFI\SONiC-OS\grubx64.efi'
 ```
+
+## SONiC and LLDP
+
+LLDP in SONiC is transmitted on the knet interfaces and thus completely untagged, regardless of VLAN configuration.
+This is working as intended, LLDP is commonly transmitted either on VLAN 1 or untagged.
