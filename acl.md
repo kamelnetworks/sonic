@@ -80,3 +80,14 @@ are unique between the two IP versions - e.g. by prefixing "MIRRORV6" on the v6 
 v6 rules will silently overwrite the v4 rules as of this writing (SONiC 202012).
 
 Mirroring on egress seems to not be supported on Broadcom and will fail with a SAI error in the logs.
+
+### Linux ERSPAN receiver
+
+While you can easily capture and analyze ERSPAN traffic straight in Wireshark,
+you can also create a Linux interface to decapsulate ERSPAN traffic.
+
+Example:
+
+```shell
+sudo ip link add erspan-kg type erspan remote 172.18.0.250 local 172.18.0.249 external
+```
