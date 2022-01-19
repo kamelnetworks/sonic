@@ -208,3 +208,14 @@ $ efibootmgr -c -L SONiC-OS -l '\EFI\SONiC-OS\grubx64.efi'
 
 LLDP in SONiC is transmitted on the knet interfaces and thus completely untagged, regardless of VLAN configuration.
 This is working as intended, LLDP is commonly transmitted either on VLAN 1 or untagged.
+
+## ERSPAN a port
+
+You can mirror a port (in this case `Ethernet96`) for debugging purposes like this:
+```
+# This has to be in the default VRF, switch is 172.18.0.250 and ERSPAN receiver is at 172.18.0.251 
+sudo config mirror_session erspan add test-erspan 172.18.0.250 172.18.0.251 10 10 35006 0 Ethernet96 both
+```
+
+See `sudo config mirror_session erspan add --help` for details what the options are.
+Also see the [ACL](acl.md) page for some details about ERSPAN.
