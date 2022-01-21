@@ -18,9 +18,9 @@ Random good-to-know things about SONiC that we wish were better documented
 | Reset configuration | `sonic-cfggen -H -k "$(sonic-cfggen -d -v 'DEVICE_METADATA.localhost.hwsku')" --print-data > /etc/sonic/config_db.json` |
 | Hardware reset SFP module | `sudo sfputil reset Ethernet0`
 
-## Enable REST API authentication
+## Enable REST and gNMI API authentication
 
-By default the REST API is unauthenticated (!!) so you want to enable some sort of authentication.
+By default the REST and gNMI API is unauthenticated (!!) so you want to enable some sort of authentication.
 
 Today, due to some weirdness in handling `nil` values you can load the following configuration blob:
 ```json
@@ -33,6 +33,13 @@ Today, due to some weirdness in handling `nil` values you can load the following
             "ca_crt": "",
             "port": "",
             "log_level": ""
+        }
+    },
+    "TELEMETRY": {
+        "gnmi": {
+            "client_auth": "True",
+            "port": "8080",
+            "log_level": "2"
         }
     }
 }
