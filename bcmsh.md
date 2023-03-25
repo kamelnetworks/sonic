@@ -212,3 +212,46 @@ To manually add an IPv6 route you can use `l3 ip6route add` like this:
 ```
 drivshell> l3 ip6route add vrf=3 IP=2a10:11c0:: masklen=32 mac=00:09:0f:09:bc:07 intf=100008
 ```
+
+## Live changing configuration
+
+It is possible to mess around with the chip configuration live, as long as one is prepared
+to have a really mad SONiC (until reboot).
+
+Example 1:
+
+```
+drivshell>config portmap_69=77:40
+drivshell>init all
+Port 69 bandwidth 40 Gb and port 70 can not be both configured
+Port 69 bandwidth 40 Gb and port 71 can not be both configured
+Port 69 bandwidth 40 Gb and port 72 can not be both configured
+PGW_CL4 and PGW_CL5 total line rate bandwidth (230 Gb) exceeds 200 Gb
+0:soc_info_config: Port config error !!
+0:system_init: system_init: Device reset failed: Invalid configuration
+```
+
+Example 2:
+
+```
+drivshell>config portmap_70=78:10:i
+drivshell>config portmap_71=79:10:i
+drivshell>config portmap_72=80:10:i
+drivshell>init all
+init all
+0:soc_egress_drain_cells: MacDrainTimeOut:port 0,xe46, timeout draining packets
+0:soc_egress_drain_cells: MacDrainTimeOut:port 0,xe47, timeout draining packets
+0:soc_egress_drain_cells: MacDrainTimeOut:port 0,xe46, timeout draining packets
+0:soc_egress_drain_cells: MacDrainTimeOut:port 0,xe47, timeout draining packets
+0:bcmi_xgs5_bfd_init: uKernel BFD application not available
+```
+
+Coupled with online lane changing, it should be possible to do a lot of debugging
+regarding breakout and similar issues:
+
+```
+port xe60-xe63 en=0
+port xe60 lanes 4
+port xe60 speed=40000
+port xe60-xe63 en=1
+```
