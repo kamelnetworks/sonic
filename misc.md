@@ -16,6 +16,7 @@ Random good-to-know things about SONiC that we wish were better documented
 | Enter KLISH       | `sonic-cli` |
 | Set interface description | `sonic-db-cli CONFIG_DB hset "PORT|Ethernet94" description "some fancy description"` |
 | Reset configuration | `sonic-cfggen -H -k "$(sonic-cfggen -d -v 'DEVICE_METADATA.localhost.hwsku')" --print-data > /etc/sonic/config_db.json` |
+| Reset configuration w/ new SKU | `sonic-cfggen -H -k "MySKU" --print-data > /etc/sonic/config_db.json; sed 's/^HWSKU=.*/HWSKU=MySKU/' /etc/sonic/sonic-environment` |
 | Hardware reset SFP module | `sudo sfputil reset Ethernet0`
 
 ## Enable REST and gNMI API authentication
