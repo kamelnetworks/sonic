@@ -228,3 +228,15 @@ sudo config mirror_session erspan add test-erspan 172.18.0.250 172.18.0.251 10 1
 
 See `sudo config mirror_session erspan add --help` for details what the options are.
 Also see the [ACL](acl.md) page for some details about ERSPAN.
+
+## LACP / PortChannel
+
+You can find a example in [SONiC Command Line Interface Guide](https://github.com/sonic-net/sonic-utilities/blob/master/doc/Command-Reference.md#portchannels). If you're using this to connect to other switches and routers, make sure to set fallback to false (so that you don't make a L2 loop).
+
+If the PortChannel isn't showing up correcty, check if teamd feature is enabled and running:
+```
+(vrf:mgmt)root@sonic:~# show feature status teamd
+Feature    State    AutoRestart
+---------  -------  -------------
+teamd      enabled  enabled
+```
