@@ -18,6 +18,7 @@ Random good-to-know things about SONiC that we wish were better documented
 | Reset configuration | `sonic-cfggen -H -k "$(sonic-cfggen -d -v 'DEVICE_METADATA.localhost.hwsku')" --print-data > /etc/sonic/config_db.json` |
 | Reset configuration w/ new SKU | `sonic-cfggen -H -k "MySKU" --print-data > /etc/sonic/config_db.json; sed 's/^HWSKU=.*/HWSKU=MySKU/' /etc/sonic/sonic-environment` |
 | Hardware reset SFP module | `sudo sfputil reset Ethernet0`
+| Save configuration before rebooting to new image | `sudo config save -y /host/old_config/config_db.json` 
 
 ## Enable REST and gNMI API authentication
 
