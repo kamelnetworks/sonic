@@ -48,3 +48,60 @@ RX: EI threshold = 6
 -----+--------------------+---------------------+-----------------------+-------+-------+--------------------------------+-----------------------------------------------+-------------------------------+--------+------
   :1a|00 0a 04 04 00 00 00|  0  0  0  0  0  0  0|  0   0   0   0   0   0| ff  9f|  0   0| 0  0  0  0  0  0  0  0  0  0  0|ff ff        3  3  2 -1  1  0  0  0  0  0      |   fc   fc   fc   fc   fc   fc |   1e-06|08 e2
 ```
+
+## Transmitter
+
+Let's break this down. The first part is the transmitterr.
+```
+   Addr TX Width Pam Inv Gray Pcode Swzl  CF Rate Div  Gbps     Data Out Pre3     Pre2     Pre1    Atten     Post Vert Amp Slew T2
+-------- -- ----- --- --- ---- ----- ---- --- ---- --- ----- -------- --- ---- -------- -------- -------- -------- ---- --- ---- --
+    :1a  1    40   2  ON  OFF   OFF  OFF  40  2.0  66 10.29     CORE   1    0        0        0        0        0                   
+```
+
+Explaination of interesting fields:
+
+ * `Pam` either 2 for NRZ or 4 for PAM4
+ * `Gbps` is set to the lane speed in use
+ * `Pre3`/`Pre2`/`Pre1`/`Atten` is the current settings for fine tuning the outgoing analog signal
+
+## Receiver
+
+The second part is the receiver:
+
+```
+   Addr RX Width Pam Inv Gray Pcode Swzl  CF Rate Div  Gbps      Data     Qual     Cmp_Mode  EI OK LK LB o_core  Term Phase E     Errors        BER
+-------- -- ----- --- --- ---- ----- ---- --- ---- --- ----- --------- -------- ------------ --- -- -- -- ------ ----- ----- - ---------- ----------
+    :1a  1    40   2 OFF  OFF   OFF  OFF  42  2.0  66 11.19       OFF   unqual          XOR Dis 11  1  0 0x0030 FLOAT     0 1          -          -  
+```
+
+Explaination of interesting fields:
+
+ * `Pam` either 2 for NRZ or 4 for PAM4
+ * `Gbps` is set to the lane speed in use
+ * `Cmp_Mode` seems to be related to if the lane is currently in testing mode (PRBS) or used for data
+ * `LK` seems to be Frequency Lock, i.e. that the signal is detected and has the a compatible clock
+
+## Clock generation
+
+This is followed by the clock generation section:
+
+```
+TX PLL gains: bbGAIN=25, intGAIN= 7
+RX PLL gains: bbGAIN= 2, intGAIN= 7
+RX: EI threshold = 6
+
+   Addr         SPICO             TX PLL PCS FIFO Data Edge Test  DFE  CDC
+-------- ------------- ------------------ -------- ---- ---- ---- ---- -----
+    :1a        REFCLK             REFCLK F66      iclk qclk iclk iclk  DATA
+```
+
+## Equalizers
+
+Finally, we have the equalizers (CTLE, FFE, DFE) section:
+
+```
+             CTLE         |       RxFFE         |                  VOS                  |            VERNIER             |                      DFE                      |           Eye Height          | 1 /    |State/
+ Addr|DC LF HF BW G1 G2 SC|  1  2  3  4  5  6  7|         DATA          | TEST  |  CDR  |UO UE MO ME LO LE TO TE EO EE TP|G1 G2     1  2  3  4  5  6  7  8  9  A  B  C  D|                               | dwell  |Status
+-----+--------------------+---------------------+-----------------------+-------+-------+--------------------------------+-----------------------------------------------+-------------------------------+--------+------
+  :1a|00 0a 04 04 00 00 00|  0  0  0  0  0  0  0|  0   0   0   0   0   0| ff  9f|  0   0| 0  0  0  0  0  0  0  0  0  0  0|ff ff        3  3  2 -1  1  0  0  0  0  0      |   fc   fc   fc   fc   fc   fc |   1e-06|08 e2
+```
