@@ -229,7 +229,7 @@ sudo config mirror_session erspan add test-erspan 172.18.0.250 172.18.0.251 10 1
 See `sudo config mirror_session erspan add --help` for details what the options are.
 Also see the [ACL](acl.md) page for some details about ERSPAN.
 
-**Note:** The current CLI does not support v6 addresses as the source/destination, and SWSS [rejects IPv6 addresses](https://github.com/sonic-net/sonic-swss/blob/1221eae41788176b5de0db3e869006ff22d2d4ff/orchagent/mirrororch.cpp#L396-L413). Unknown reason why.
+**Note:** The current CLI does not support v6 addresses as the source/destination, and SWSS [rejects IPv6 addresses](https://github.com/sonic-net/sonic-swss/blob/1221eae41788176b5de0db3e869006ff22d2d4ff/orchagent/mirrororch.cpp#L396-L413). Unknown reason why, SAI seems to support it from reading the docs.
 
 This is an example of a mirror session:
 
