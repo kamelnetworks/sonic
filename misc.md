@@ -229,6 +229,28 @@ sudo config mirror_session erspan add test-erspan 172.18.0.250 172.18.0.251 10 1
 See `sudo config mirror_session erspan add --help` for details what the options are.
 Also see the [ACL](acl.md) page for some details about ERSPAN.
 
+**Note:** The current CLI does not support v6 addresses as the source/destination, but from looking at the code it seems like SAI and SWSS does not have that limitation. This means that you should be able to manually insert a mirror session with IPv6 and it might work.
+
+This is an example of a mirror session:
+
+```json
+{
+    "MIRROR_SESSION": {
+        "blackbox.sonix.int": {
+            "direction": "RX",
+            "dscp": "10",
+            "dst_ip": "100.100.99.1",
+            "gre_type": "35006",
+            "queue": "0",
+            "src_ip": "100.100.99.4",
+            "src_port": "Ethernet192",
+            "ttl": "10",
+            "type": "ERSPAN"
+        }
+    }
+}
+```
+
 ## LACP / PortChannel
 
 You can find a example in [SONiC Command Line Interface Guide](https://github.com/sonic-net/sonic-utilities/blob/master/doc/Command-Reference.md#portchannels). If you're using this to connect to other switches and routers, make sure to set fallback to false (so that you don't make a L2 loop).
