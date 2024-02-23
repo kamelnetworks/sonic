@@ -23,7 +23,15 @@ You can enter the Broadcom diagnostic shell by entering `bcmsh`.
  * `pciephy fw version`
    * Shows PCIe firmware version
  * `crm show resources all`
-   * Show resource utilization for all critical resources 
+   * Show resource utilization for all critical resources
+ * `BCMSAI MPTnl Dip Detail`
+   * Show known destination VTEPs.
+ * `dump chg EGR_IP_TUNNEL`
+   * Show internal representation of VTEP source settings.
+ * `dump chg EGR_DVP_ATTRIBUTE`
+   * Show internal representation of VTEP destinations.
+ * `dump chg l2x`
+   * Dump all known L2 destinations including those reachable over VXLAN.
 
 You can tell SONiC to use debug level logging on things related to SAI
 with the command `swssloglevel -l SAI_LOG_LEVEL_DEBUG -s -a`.
