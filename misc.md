@@ -226,6 +226,8 @@ You can mirror a port (in this case `Ethernet96`) for debugging purposes like th
 sudo config mirror_session erspan add test-erspan 172.18.0.250 172.18.0.251 10 10 35006 0 Ethernet96 both
 ```
 
+**Note:** I have not been able to get ERSPAN to be able to egress from the control plane. This makes sense, but worth considering.
+
 See `sudo config mirror_session erspan add --help` for details what the options are.
 Also see the [ACL](acl.md) page for some details about ERSPAN.
 
