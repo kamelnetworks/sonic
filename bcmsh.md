@@ -36,6 +36,10 @@ You can enter the Broadcom diagnostic shell by entering `bcmsh`.
    * Show internal representation of VTEP destinations.
  * `dump chg l2x`
    * Dump all known L2 destinations including those reachable over VXLAN.
+ * `portmod info pm`
+   * Shows overview of what ports are mapped to which SerDes and physical lanes.
+ * `portmod eyescan port=5 mode=fast lane=0`
+   * Show eye diagram for the first lane on logical port 5. 
 
 You can tell SONiC to use debug level logging on things related to SAI
 with the command `swssloglevel -l SAI_LOG_LEVEL_DEBUG -s -a`.
