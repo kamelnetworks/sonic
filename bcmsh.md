@@ -10,6 +10,8 @@ You can enter the Broadcom diagnostic shell by entering `bcmsh`.
      out what ports are available if you need to manual breakout for example.
  * `ps`
    * Shows all configured ports and their status
+ * `show pmap`
+   * TODO: Not sure
  * `phy diag xe0 dsc`
    * Shows low-level lane SerDes status, useful for debugging lane mapping
  * `pbmp xe0-xe5`
@@ -22,6 +24,8 @@ You can enter the Broadcom diagnostic shell by entering `bcmsh`.
    * Show SDK and SAI version
  * `pciephy fw version`
    * Shows PCIe firmware version
+ * `cancun stat`
+   * Shows firmware loaded into ASIC 
  * `crm show resources all`
    * Show resource utilization for all critical resources
  * `BCMSAI MPTnl Dip Detail`
