@@ -53,3 +53,5 @@ These programs, `linkscan_led_fw.bin` and `custom_led.bin`, are checked in as
 binary blobs so modifying them or porting a new platform is extremely time consuming.
 
 The address `0x3800` is called `CUSTOM_HANDLER_ADDR`. You can find the source code for making your own custom LED code in the [OpenBCM](https://github.com/Broadcom-Network-Switching-Software/OpenBCM/tree/master/sdk-6.5.27/tools/led/cmicx) ([backup](https://github.com/bluecmd/OpenBCM/tree/master/sdk-6.5.27/tools/led/cmicx)) repository.
+
+[SONIX](https://sonix.network/) publishes their custom LED code [at github](https://github.com/sonix-network/broadcom-leds).
