@@ -37,10 +37,10 @@ Example: On AS5712-54X it seems that two LED controllers are in use, LED 0 is in
 
 ### Trident 3 / Tomahawk 3
 
-This generation uses a Cortex-M0 ARM CPU to drive a LED/linkscan program.
+This generation uses a Cortex-M0 ARM CPU to drive a LED/linkscan program. This CPU is referred to as CMICX and is a s
 You can see how it is loaded by looking at `led_proc_init.soc` or sometimes `sai_preinit_cmd.soc`.
 
-```
+``` 
 led auto off
 led stop
 m0 load 0 0x0 /usr/share/sonic/platform/linkscan_led_fw.bin
@@ -51,3 +51,5 @@ led start
 
 These programs, `linkscan_led_fw.bin` and `custom_led.bin`, are checked in as
 binary blobs so modifying them or porting a new platform is extremely time consuming.
+
+The address `0x3800` is called `CUSTOM_HANDLER_ADDR`. You can find the source code for making your own custom LED code in the [OpenBCM](https://github.com/Broadcom-Network-Switching-Software/OpenBCM/tree/master/sdk-6.5.27/tools/led/cmicx) ([backup](https://github.com/bluecmd/OpenBCM/tree/master/sdk-6.5.27/tools/led/cmicx)) repository.
