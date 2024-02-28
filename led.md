@@ -41,7 +41,7 @@ Example: On AS5712-54X it seems that two LED controllers are in use, LED 0 is in
 
 ### Trident 3 / Tomahawk 3
 
-This generation uses a Cortex-M0 ARM CPU to drive a LED/linkscan program. This CPU is referred to as CMICX and is a s
+This generation uses a Cortex-M0 ARM CPU to drive a LED/linkscan program. This CPU is referred to as CMICX.
 You can see how it is loaded by looking at `led_proc_init.soc` or sometimes `sai_preinit_cmd.soc`.
 
 ``` 
