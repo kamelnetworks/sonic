@@ -13,6 +13,10 @@ Broadcom LED driving is started by
 [start_led.sh](https://github.com/Azure/sonic-buildimage/blob/master/platform/broadcom/docker-syncd-brcm/start_led.sh)
 in the `syncd` container.
 
+bcmsh commands for debugging LEDs:
+
+  * `led status`
+
 ### Trident 2 / Tomahawk 2
 
 This generation uses an unknown micro-controller architecture. Trident 2 has 2 controllers, Tomahawk 2 seems to have at least 4.
