@@ -17,6 +17,10 @@ bcmsh commands for debugging LEDs:
 
   * `led status`
 
+When the `led auto on` command is execute the `ledproc_linkscan_cb` built-in to the Broadcom SDK will take charge of
+pushing new LED data to the LED processors. Depending on the custom LED code this may or may not be used, but can
+be used to base LEDs on things like if the interface speed is 100G or not.
+
 ### Trident 2 / Tomahawk 2
 
 This generation uses an unknown micro-controller architecture. Trident 2 has 2 controllers, Tomahawk 2 seems to have at least 4.
