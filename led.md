@@ -34,6 +34,36 @@ drivshell>led auto on
 - Using new linkscan_cb without port speed
 ```
 
+### Dumping current `led_control_data`
+
+You can use the `cint` mode in `bcmsh` to verify the contents of the `led_control_data` bank.
+
+```c
+drivshell>cint
+Entering C Interpreter. Type 'exit;' to quit.
+
+cint> void dump_led_data() {
+    uint8 data[1024];
+    if (bcm_switch_led_control_data_read(0, 0, 0, data, sizeof(data)) != 0) {
+        print "Failed to read!";
+        return;
+    }
+    uint16 i;
+    for (i = 0; i < sizeof(data); i++) {
+        if (data[i] != 0) {
+            printf("Offset %4d: 0x%02x\n", i, data[i]);
+        }
+    }
+}
+cint> dump_led_data();
+Offset   32: 0x05
+Offset   68: 0x05
+Offset   98: 0x03
+Offset   99: 0x03
+```
+
+In the above output we can see that the physical port 33, 69, 99, and 100 are up.
+
 ### Trident 2 / Tomahawk 2
 
 This generation uses an unknown micro-controller architecture. Trident 2 has 2 controllers, Tomahawk 2 seems to have at least 4.
