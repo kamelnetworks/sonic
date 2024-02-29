@@ -21,6 +21,19 @@ When the `led auto on` command is execute the `ledproc_linkscan_cb` built-in to 
 pushing new LED data to the LED processors. Depending on the custom LED code this may or may not be used, but can
 be used to base LEDs on things like if the interface speed is 100G or not.
 
+Something potentially interesting is that at least on BRCM SAI 8.4.0.2 the `led auto on` registers `ledproc_linkscan_cb`
+but calls it the "new" version "without port speed", while doing `led auto off` refers to the older version as having port
+speed.
+
+```
+drivshell>bsv
+BRCM SAI ver: [8.4.0.2], OCP SAI ver: [1.11.0], SDK ver: [sdk-6.5.27] CANCUN ver: [06.04.01]
+drivshell>led auto off
+- Using old linkscan_cb with port speed
+drivshell>led auto on
+- Using new linkscan_cb without port speed
+```
+
 ### Trident 2 / Tomahawk 2
 
 This generation uses an unknown micro-controller architecture. Trident 2 has 2 controllers, Tomahawk 2 seems to have at least 4.
