@@ -39,7 +39,9 @@ You can enter the Broadcom diagnostic shell by entering `bcmsh`.
  * `portmod info pm`
    * Shows overview of what ports are mapped to which SerDes and physical lanes.
  * `portmod eyescan port=5 mode=fast lane=0`
-   * Show eye diagram for the first lane on logical port 5. 
+   * Show eye diagram for the first lane on logical port 5.
+ * `vlan create 100 pbm=ce1,ce2 ubm=ce1,ce2; pvlan set ce1,ce2 100`
+   * Create a VLAN 100 and set `ce1` and `ce2` to use the VLAN as untagged.
 
 You can tell SONiC to use debug level logging on things related to SAI
 with the command `swssloglevel -l SAI_LOG_LEVEL_DEBUG -s -a`.
