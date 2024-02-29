@@ -296,3 +296,18 @@ void hello_world() {
 }
 hello_world();
 ```
+
+Output:
+
+```
+Hello world from Cint! Here are some cool stats:
+bcm_info_t info = {
+    unsigned int vendor = 5348 (0x14e4)
+    unsigned int device = 47219 (0xb873)
+    unsigned int revision = 1 (0x1)
+    unsigned int capability = 13 (0xd)
+    int num_pipes = 2 (0x2)
+    int num_pp_pipes = 0 (0x0)
+    int num_buffers = 0 (0x0)
+}
+```
