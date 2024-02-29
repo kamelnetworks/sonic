@@ -273,3 +273,26 @@ port xe60 lanes 4
 port xe60 speed=40000
 port xe60-xe63 en=1
 ```
+
+## Cint
+
+The `cint` mode in `bcmsh` is a powerful way to execute things in the SDK API that
+otherwise is not available as diag commands. Type `cint` to enter the mode and
+enter C-like programs.
+
+Example:
+
+```c
+void hello_world() {
+  bcm_info_t info;
+  int unit = 0;
+  int rv =  bcm_info_get(unit, &info);
+  if (rv != BCM_E_NONE) {
+    printf("Error in bcm_info_get: 0x%x, %s\n", rv, bcm_errmsg(rv));
+    return;
+  }
+  print "Hello world from Cint! Here are some cool stats:";
+  print info;
+}
+hello_world();
+```
