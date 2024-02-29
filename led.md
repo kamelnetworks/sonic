@@ -21,9 +21,9 @@ When the `led auto on` command is execute the `ledproc_linkscan_cb` built-in to 
 pushing new LED data to the LED processors. Depending on the custom LED code this may or may not be used, but can
 be used to base LEDs on things like if the interface speed is 100G or not.
 
-Something potentially interesting is that at least on BRCM SAI 8.4.0.2 the `led auto on` registers `ledproc_linkscan_cb`
+Something potentially interesting is that at starting at BRCM SAI 6.0.0.10 the `led auto on` registers `ledproc_linkscan_cb`
 but calls it the "new" version "without port speed", while doing `led auto off` refers to the older version as having port
-speed.
+speed. This change is probably why issues like [this](https://github.com/sonic-net/sonic-buildimage/issues/10103) came to be.
 
 ```
 drivshell>bsv
