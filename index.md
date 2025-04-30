@@ -8,6 +8,7 @@ These are some articles we have written about how to configure and operate SONiC
  * [Innovium shell tips & tricks](invmshell.md)
  * More than you want to know about [Interface LEDs](led.md)
  * Good to know about [QSFP -> SFP adapters](qsfp-sfp-adapters.md)
+ * [Building SONiC kernel and modules out-of-tree](kmod.md)
  
 We also host the unofficial SONiC download site [sonic.software](https://sonic.software/)
 
