@@ -6,7 +6,7 @@
 You need the following packages to build:
 
 ```
-dpkg-dev dh-python stgit python3-jinja2 kernel-wedge quilt flex bison cpio quilt libelf-dev libssl-dev bc
+gcc-12 dpkg-dev dh-python stgit python3-jinja2 kernel-wedge quilt flex bison cpio quilt libelf-dev libssl-dev bc
 ```
 
 ## Build kernel
