@@ -4,7 +4,7 @@ These are some articles we have written about how to configure and operate SONiC
  * [ACLs and ERSPAN](acl.md)
  * [Queues and Buffers](queue.md)
  * [EVPN setup and operations](evpn.md)
- * [Broadcom shell tips & tricks](bcmsh.md)
+ * [Broadcom diag shell (bcmsh) reference](https://bcmsh.sonix.network/)
  * [Innovium shell tips & tricks](invmshell.md)
  * More than you want to know about [Interface LEDs](led.md)
  * Good to know about [QSFP -> SFP adapters](qsfp-sfp-adapters.md)
